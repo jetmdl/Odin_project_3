@@ -70,4 +70,9 @@ function gameRound(){
     return result;
 }
 
-console.log(gameRound());
+
+function game(){
+    for (i=1;i<6;i++){
+        gameRound();
+    }
+}
