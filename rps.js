@@ -73,6 +73,8 @@ function gameRound(){
 
 function game(){
     for (i=1;i<6;i++){
-        gameRound();
+        console.log(gameRound());
     }
 }
+
+game();
