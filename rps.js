@@ -24,15 +24,52 @@ function getComputerChoice(){
     return choice;
 }
 
+function addGameListner() {
+    document.querySelector('#start-game').addEventListener('click', gameRound);
+}
+
+addGameListner();
 
 function gameRound(){
-    let playerChoice = prompt("enter your choice:");
+
+    const rock = document.querySelector('#rock');
+    const paper = document.querySelector('#paper');
+    const scissors = document.querySelector('#scissors');
+    const start = document.querySelector('#start-game');
+
+    rock.style = 'display: block';
+    paper.style = 'display: block';
+    scissors.style = 'display: block';
+    start.style = 'display: none';
+
+    rock.addEventListener('click', setPlayerChoiceRock);
+    paper.addEventListener('click', setPlayerChoicePaper);
+    scissors.addEventListener('click', setPlayerChoiceScissors);
+}
+
+function setPlayerChoiceRock() {
+    setPlayerChoice('Rock');
+}
+
+function setPlayerChoicePaper() {
+    setPlayerChoice('Paper');
+}
+
+function setPlayerChoiceScissors() {
+    setPlayerChoice('Scissors');
+}
+
+function setPlayerChoice(aValue) {
+    
+    let playerChoice = aValue;
+
     let computerChoice = getComputerChoice();
+    let cont = document.querySelector('#content');
 
     console.log(computerChoice);
 
     if (computerChoice === 'Rock'){
-        console.log('pc-rock');
+        // console.log('pc-rock');
         if (playerChoice === 'Rock' || playerChoice === 'rock' || playerChoice ==='ROCK'){
             result = "Draw";
         }
@@ -44,7 +81,7 @@ function gameRound(){
         }
     }
     else if (computerChoice === 'Paper'){
-        console.log('pc-paper');
+        // console.log('pc-paper');
         if (playerChoice === 'Rock' || playerChoice === 'rock' || playerChoice === 'ROCK'){
             result = "Lose";
         }
@@ -56,7 +93,7 @@ function gameRound(){
         }
     }
     else if (computerChoice === 'Scissors'){
-        console.log('pc-scissors');
+        // console.log('pc-scissors');
         if (playerChoice === 'Rock' || playerChoice === 'rock' || playerChoice === 'ROCK'){
             result = "Win";
         }
@@ -67,14 +104,15 @@ function gameRound(){
             result = "Draw";
         }
     }
-    return result;
+    //return result;
+    cont.innerHTML = result;
 }
 
+// function game(){
+//     for (i=1;i<6;i++){
+//         console.log(gameRound());
+//     }
+// }
 
-function game(){
-    for (i=1;i<6;i++){
-        console.log(gameRound());
-    }
-}
 
-game();
+//game();
